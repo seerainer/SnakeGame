@@ -111,6 +111,7 @@ class GameBoard extends Canvas {
 		}
 		case SWT.ESC -> {
 			final var wasGameOver = gameOver; // Capture the state before reset
+			gameInitialized = false; // Reset game initialization state
 			initGame(); // Reset the game
 			if (wasGameOver) {
 				startGameLoop(); // Restart the game loop if it was stopped
