@@ -117,17 +117,20 @@ class GameBoard extends Canvas {
 				startGameLoop(); // Restart the game loop if it was stopped
 			}
 		}
-		default -> {
-			if (e.character == 'q' || e.character == 'Q') {
-				getShell().close(); // Close the game on 'q' or 'Q'
-			} else if (e.character == 'p' || e.character == 'P') {
-				if (gameLoop != null) {
-					getDisplay().timerExec(-1, gameLoop); // Pause the game
-					gameLoop = null;
-				} else {
-					startGameLoop(); // Resume the game
-				}
+		case 'p', 'P' -> {
+			if (gameLoop != null) {
+				getDisplay().timerExec(-1, gameLoop); // Pause the game
+				gameLoop = null;
+			} else {
+				startGameLoop(); // Resume the game
 			}
+		}
+		case 'q', 'Q' -> {
+			getShell().close();
+		}
+		default -> {
+			// Ignore other keys
+			return;
 		}
 		}
 	}
